@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>linwang的个人空间</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+
+            /* 背景图设置 */
+            background: url("dream.png") no-repeat center center / cover;
+            opacity: 0;
+            animation: fadeIn 3s ease-in forwards; /* 背景渐入 */
+        }
+
+        /* 渐变文字通用类 */
+        .gradient-text {
+            background: linear-gradient(270deg, #00c6ff, #0072ff, #00c6ff,mediumpurple); /* 渐变颜色 */
+            background-size: 600% 600%;  /* 放大背景，保证有空间移动 */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+
+            animation: gradientMove 8s ease infinite; /* 动画效果 */
+        }
+
+        @keyframes gradientMove {
+            0%   { background-position: 0% 50%; }
+            50%  { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .gradient-text2 {
+            background: linear-gradient(270deg, #00c6ff, #0072ff, mediumpurple); /* 渐变颜色 */
+            background-size: 600% 600%;  /* 放大背景，保证有空间移动 */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+
+            animation: gradientMove 8s ease infinite; /* 动画效果 */
+        }
+
+
+        /* 半透明的白色覆盖层 */
+        .overlay {
+            display: inline-block;
+            padding: 0.6em 1.2em;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            border-radius: 12px;
+            font-size: 2rem;
+            margin: 20px auto;
+            opacity: 0;
+            animation: fadeIn 2s ease-in forwards;
+            animation-delay: 1s;
+        }
+
+        /* 标题容器，保证水平居中 */
+        .header {
+            text-align: center;
+            padding-top: 20px;
+        }
+
+        /* 背景渐入 */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+
+        /* 单独的渐入渐出动画效果 */
+        .fade {
+            opacity: 0;
+            animation: fadeInOut 12s ease-in-out forwards;
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0; }
+            50%      { opacity: 1; }
+        }
+
+        /* 外层容器：使用 Flex 布局，让左右并排 */
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch;
+            margin: 20px;
+        }
+
+        /* 让盒子支持过渡动画 */
+        .left-box, .right-box {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer; /* 鼠标悬停变小手，提示可点 */
+        }
+
+        /* 点击时放大并增加阴影 */
+        .left-box:active, .right-box:active {
+            transform: scale(1.05); /* 放大 5% */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* 增加阴影层次感 */
+        }
+
+
+        /* 左侧文字块 */
+        .left-box {
+            width: 45%;
+            margin-left: 40px;
+            text-align: left;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(6px);
+            border-radius: 10px;
+            padding: 15px;
+        }
+
+        /* 右侧文字块 */
+        .right-box {
+            width: 45%;
+            margin-right: 40px;
+            text-align: left;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(6px);
+            border-radius: 10px;
+            padding: 15px;
+        }
+    </style>
+    <script>
+        // 在12秒动画完成后，替换文字并重新播放渐入渐出
+        setTimeout(() => {
+            const textEl = document.getElementById("fade-text");
+            textEl.innerHTML = '<span class="gradient-text">静谧悠远的世界，永无被打扰的安宁，无时无刻的孤独，却放弃和他人接触。</span>';
+            textEl.classList.remove("fade"); // 移除原动画
+        }, 12000); // 对应 fadeInOut 动画的12s时长
+    </script>
+
+
+</head>
+<body>
+
+<div class="header">
+    <h1 class="overlay"><span class="gradient-text">linwang的个人空间</span></h1>
+</div>
+
+<div style="text-align: center;">
+    <p class="overlay fade" id="fade-text" style="font-size: 16px;">
+        <span class="gradient-text">想做的事情总是太多太多，能做到的事情总是少之有少。期望的世界或许永远无法到来，那么想象中的自己呢？</span>
+    </p>
+</div>
+
+<div class="container">
+    <!-- 左侧文字区域 -->
+    <div class="left-box">
+        <p class="gradient-text">做个自我介绍，我是中国科学技术大学的大三学生，专业是计算机科学与技术。平时喜欢的事情就是阅读故事。无论是真实的故事，还是虚假的故事，我都会喜欢上。</p>
+        <br><p class="gradient-text">如你所见的，我绝非一个优秀的人。</p>
+        <br><p class="gradient-text">谁知道自己要成为什么样子呢。</p>
+    </div>
+
+    <!-- 右侧文字区域 -->
+    <div class="right-box">
+        <p class="gradient-text">喜欢玩的游戏是空洞骑士，视觉小说，火影忍者。</p> <br>
+        <p class="gradient-text">喜欢做的事情是发呆。</p><br>
+        <p class="gradient-text">喜欢听的音乐是周杰伦。</p><br>
+        <p class="gradient-text">喜欢看的电影是你的名字。</p>
+    </div>
+</div>
+
+<div class="container">
+    <!-- 左侧文字区域 -->
+    <div class="left-box">
+        <h2 class="gradient-text" style="text-align: center">已经做的成就</h2><br>
+        <p class="gradient-text">尚未取得任何成就，绩点2.9</p>
+    </div>
+
+    <!-- 右侧文字区域 -->
+    <div class="right-box">
+        <h2 class="gradient-text" style="text-align: center">已经做的项目</h2><br>
+        <p class="gradient-text">现在还没有，等今年结束吧</p>
+    </div>
+</div>
+
+</body>
+</html>
