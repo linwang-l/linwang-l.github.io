@@ -19,18 +19,25 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
         with:
-          fetch-depth: 0  # https://vitepress.dev/reference/default-theme-last-updated#last-updated
+          fetch-depth: 0
+
       - name: Setup PNPM
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v5
+        with:
+          version: 9
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 24
           cache: pnpm
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
+
       - name: Install dependencies
-        run: pnpm i
+        run: pnpm install
+
       - name: Build site
         run: |
           if [[ "${{ github.event.repository.name }}" == *".github.io" ]]; then
@@ -38,6 +45,7 @@ jobs:
           else
             pnpm build --base /${{ github.event.repository.name }}/
           fi
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
