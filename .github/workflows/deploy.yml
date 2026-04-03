@@ -41,11 +41,10 @@ jobs:
       - name: Build site
         run: |
           if [[ "${{ github.event.repository.name }}" == *".github.io" ]]; then
-            pnpm build --base /
+            pnpm docs:build --base /
           else
-            pnpm build --base /${{ github.event.repository.name }}/
+            pnpm docs:build --base /${{ github.event.repository.name }}/
           fi
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
