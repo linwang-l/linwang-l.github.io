@@ -13,7 +13,6 @@ lastUpdated: true
 
 ustc计算机图形学课程
 
-[杀戮尖塔cs模组制作中……](https://github.com/linwang-l/Slay-the-Spire-nikoandcs-mod)
 
 
 ### 学习之余的分享

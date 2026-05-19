@@ -4,8 +4,8 @@ lastUpdated: true
 
 hero:
   name: "Linwang-l"
-  text: "just for fun"
-  tagline: 我现在只觉得，这个世界令我心情无比的舒畅。
+  text: "乘上风，用白之羽翼与君同行，青色缝隙间的常夏之岛"
+  tagline: 寻找着理由迷失了方向，在梦的渊底徘徊不前。
   actions:
     - theme: brand
       text: 有关我的
