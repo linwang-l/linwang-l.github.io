@@ -1,0 +1,303 @@
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 2;
+}
+
+.theme-wipe-to-dark::view-transition-new(root),
+.theme-wipe-to-light::view-transition-new(root) {
+  animation: theme-view-wipe 0.34s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-wipe-to-dark::view-transition-new(root),
+  .theme-wipe-to-light::view-transition-new(root) {
+    animation: none;
+  }
+}
+
+html,
+body {
+  background: transparent;
+}
+
+.site-shell {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: clip;
+}
+
+.site-bg {
+  position: fixed;
+  z-index: 0;
+  inset: -18px;
+  background: url("/background.jpg") center / cover no-repeat;
+  filter: blur(1.5px) saturate(1.03);
+  transform:
+    translate3d(var(--bg-shift-x, 0), var(--bg-shift-y, 0), 0)
+    scale(1.018)
+    rotate(var(--bg-rotate, 0deg));
+  transform-origin: center;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.dark .site-bg {
+  inset: -24px;
+  filter: blur(1.5px) saturate(1.04);
+  transform:
+    translate3d(var(--bg-shift-x, 0), var(--bg-shift-y, 0), 0)
+    scale(1.035)
+    rotate(var(--bg-rotate, 0deg));
+}
+
+.site-bg::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: rgb(255 255 255 / 7%);
+}
+
+.dark .site-bg::after {
+  background: rgb(0 0 0 / 18%);
+}
+
+.rain-layer {
+  position: fixed;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0.58;
+}
+
+.dark .rain-layer {
+  opacity: 0.64;
+}
+
+.rain-layer::before,
+.rain-layer::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background-repeat: repeat;
+  will-change: background-position;
+}
+
+.rain-layer::before {
+  background-image:
+    radial-gradient(circle at 22px 28px, rgb(255 255 255 / 0.95) 0 2px, transparent 2.5px),
+    radial-gradient(circle at 118px 76px, rgb(255 255 255 / 0.78) 0 1.5px, transparent 2px),
+    radial-gradient(circle at 62px 146px, rgb(255 255 255 / 0.86) 0 2.2px, transparent 2.8px),
+    radial-gradient(circle at 144px 228px, rgb(255 255 255 / 0.72) 0 1.6px, transparent 2.2px),
+    radial-gradient(circle at 34px 306px, rgb(255 255 255 / 0.88) 0 2px, transparent 2.6px);
+  background-size: 180px 420px;
+  animation: snow-fall-primary 8s linear infinite;
+}
+
+.rain-layer::after {
+  background-image:
+    radial-gradient(circle at 54px 42px, rgb(255 255 255 / 0.62) 0 1.4px, transparent 2px),
+    radial-gradient(circle at 188px 118px, rgb(255 255 255 / 0.70) 0 1.8px, transparent 2.4px),
+    radial-gradient(circle at 112px 242px, rgb(255 255 255 / 0.58) 0 1.3px, transparent 1.9px),
+    radial-gradient(circle at 220px 348px, rgb(255 255 255 / 0.64) 0 1.5px, transparent 2.1px);
+  background-size: 260px 520px;
+  animation: snow-fall-secondary 11s linear infinite;
+}
+
+.site-shell .Layout {
+  position: relative;
+  z-index: 1;
+  background: transparent;
+}
+
+.VPNav,
+.VPNavBar,
+.VPNavScreen,
+.VPLocalNav,
+.VPSidebar,
+.VPFooter,
+.VPContent,
+.VPDoc,
+.VPPage,
+.VPHome {
+  background: transparent !important;
+}
+
+.VPNavBar.has-sidebar .content,
+.VPNavBar:not(.has-sidebar),
+.VPLocalNav,
+.VPSidebar,
+.VPDoc .content-container,
+.VPDocAsideOutline .content,
+.VPHome .VPFeature,
+.profile-home {
+  background: color-mix(in srgb, var(--vp-c-bg) 80%, transparent) !important;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.VPDoc .content-container,
+.profile-home {
+  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 70%, transparent);
+  border-radius: 18px;
+  box-shadow: 0 18px 42px rgb(0 0 0 / 12%);
+}
+
+.VPDoc .content-container {
+  padding: 28px;
+}
+
+.VPDoc .aside-curtain {
+  display: none !important;
+}
+
+@media (min-width: 960px) {
+  .VPDoc.has-aside {
+    padding: 40px 24px 72px;
+  }
+
+  .VPDoc.has-aside .container {
+    display: grid !important;
+    grid-template-columns: 250px minmax(0, 1fr);
+    gap: 24px;
+    width: min(100%, 1080px);
+    max-width: none !important;
+  }
+
+  .VPDoc.has-aside .aside {
+    display: block;
+    order: 1;
+    width: 100%;
+    max-width: none;
+    padding: 0;
+  }
+
+  .VPDoc.has-aside .content {
+    order: 2;
+    min-width: 0;
+    margin: 0;
+    padding: 0 0 72px;
+  }
+
+  .VPDoc.has-aside .content-container {
+    max-width: none;
+  }
+
+  .VPDoc.has-aside .aside-container {
+    position: sticky;
+    top: calc(var(--vp-nav-height) + 40px);
+    width: 100%;
+    height: auto;
+    max-height: calc(100vh - var(--vp-nav-height) - 80px);
+    padding-top: 0;
+    overflow: visible;
+  }
+
+  .VPDoc.has-aside .aside-content {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 0;
+    border: 0;
+    background: transparent !important;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    overflow: visible;
+  }
+
+  .dark .VPDoc.has-aside .aside-content {
+    background: transparent !important;
+    box-shadow: none;
+  }
+}
+
+.VPDocAsideOutline.has-outline {
+  display: none !important;
+}
+
+.VPFooter {
+  border-top: 0 !important;
+}
+
+.VPFooter .container {
+  width: min(100%, 720px);
+  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 70%, transparent);
+  border-radius: 18px;
+  padding: 18px 24px;
+  background: color-mix(in srgb, var(--vp-c-bg) 80%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 16px 36px rgb(0 0 0 / 10%);
+}
+
+.profile-home {
+  max-width: 860px;
+  margin: 40px auto;
+}
+
+.VPSwitchAppearance {
+  overflow: hidden;
+  background-image: linear-gradient(90deg, #facc15, #60a5fa, #312e81);
+  background-size: 220% 100%;
+  transition: border-color 0.16s ease, background-position 0.2s ease !important;
+}
+
+.VPSwitchAppearance:hover {
+  background-position: 100% 0;
+}
+
+.VPSwitchAppearance .check {
+  transition: transform 0.16s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.16s ease !important;
+}
+
+.VPSwitchAppearance:active .check {
+  box-shadow: 0 0 0 4px rgb(255 255 255 / 22%), var(--vp-shadow-1);
+}
+
+.dark .VPSwitchAppearance {
+  background-position: 100% 0;
+}
+
+.dark .VPSwitchAppearance .check {
+  transform: translateX(18px);
+}
+
+@keyframes theme-view-wipe {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes snow-fall-primary {
+  from {
+    background-position: 0 -420px;
+  }
+
+  to {
+    background-position: 42px 420px;
+  }
+}
+
+@keyframes snow-fall-secondary {
+  from {
+    background-position: 120px -520px;
+  }
+
+  to {
+    background-position: 74px 520px;
+  }
+}

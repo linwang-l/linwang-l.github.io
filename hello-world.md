@@ -4,7 +4,7 @@ titleTemplate: 仅展示想要展示的一面
 layout:  doc # doc | home | page
 navbar:  true
 sidebar: true
-aside: true
+aside: left
 footer:  false
 lastUpdated: true
 ---

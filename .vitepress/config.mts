@@ -9,26 +9,21 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: '个人主页', link: '/markdown-examples' }
+      { text: '文章', link: '/articles' }
     ],
 
       logo: {  // Or logo: "/favicon.svg" if you don't need dark mode support
       light: "/favicon.svg",
       dark: "/favicon-dark.svg"
     },
-    sidebar: [
-      {
-        text: 'Linwang-l的个人主页喵',
-        items: [
-          { text: '有关我的', link: '/markdown-examples' },
-          { text: '我都做什么', link: '/api-examples' },
-          { text: '文字展示', link: '/hello-world' }
-        ]
-      }
-    ],
    
     search: {        // https://vitepress.dev/reference/default-theme-search
       provider: 'local'
+    },
+    aside: 'left',
+    outline: {
+      label: 'Contents',
+      level: [2, 3]
     },
     footer: {        // https://vitepress.dev/reference/default-theme-footer
       message: 'Released under the MIT License.',
