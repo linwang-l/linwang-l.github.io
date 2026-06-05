@@ -12,8 +12,8 @@ export default defineConfig({
     ],
 
       logo: {  // Or logo: "/favicon.svg" if you don't need dark mode support
-      light: "/favicon.svg",
-      dark: "/favicon-dark.svg"
+      light: "/favision.svg",
+      dark: "/dark-favision.svg"
     },
    
     search: {        // https://vitepress.dev/reference/default-theme-search
@@ -32,9 +32,9 @@ export default defineConfig({
   
   
   head: [
-    ["link",{rel:"icon",href:"/favicon.svg"}],
-    ["link",{rel:"icon",href:"/favicon-dark.svg",media:"(prefers-color-scheme: dark)"}],
-    ["link",{rel:"icon",href:"/favicon.svg",media:"(prefers-color-scheme: light)"}],
+    ["link",{rel:"icon",href:"/favision.svg"}],
+    ["link",{rel:"icon",href:"/dark-favision.svg",media:"(prefers-color-scheme: dark)"}],
+    ["link",{rel:"icon",href:"/favision.svg",media:"(prefers-color-scheme: light)"}],
   ],
     socialLinks: [
       { icon: 'github', link: 'https://github.com/linwang-l' }

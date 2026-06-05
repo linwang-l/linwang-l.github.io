@@ -29,10 +29,108 @@ body {
   background: transparent;
 }
 
+html {
+  scrollbar-width: none;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
 .site-shell {
   position: relative;
   min-height: 100vh;
   overflow-x: clip;
+}
+
+.site-content {
+  position: relative;
+  z-index: 1;
+  transition: opacity 0.24s ease, visibility 0.24s ease;
+}
+
+.site-content.is-booting {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.site-loading {
+  position: fixed;
+  z-index: 20;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: var(--vp-c-bg);
+  overflow: hidden;
+}
+
+.site-loading::before,
+.site-loading::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background-repeat: repeat;
+  pointer-events: none;
+  will-change: background-position;
+}
+
+.site-loading::before {
+  background-image:
+    radial-gradient(circle at 22px 28px, rgb(255 255 255 / 0.95) 0 2px, transparent 2.5px),
+    radial-gradient(circle at 118px 76px, rgb(255 255 255 / 0.78) 0 1.5px, transparent 2px),
+    radial-gradient(circle at 62px 146px, rgb(255 255 255 / 0.86) 0 2.2px, transparent 2.8px),
+    radial-gradient(circle at 144px 228px, rgb(255 255 255 / 0.72) 0 1.6px, transparent 2.2px),
+    radial-gradient(circle at 34px 306px, rgb(255 255 255 / 0.88) 0 2px, transparent 2.6px);
+  background-size: 180px 420px;
+  opacity: 0.62;
+  animation: snow-fall-primary 8s linear infinite;
+}
+
+.site-loading::after {
+  background-image:
+    radial-gradient(circle at 54px 42px, rgb(255 255 255 / 0.62) 0 1.4px, transparent 2px),
+    radial-gradient(circle at 188px 118px, rgb(255 255 255 / 0.70) 0 1.8px, transparent 2.4px),
+    radial-gradient(circle at 112px 242px, rgb(255 255 255 / 0.58) 0 1.3px, transparent 1.9px),
+    radial-gradient(circle at 220px 348px, rgb(255 255 255 / 0.64) 0 1.5px, transparent 2.1px);
+  background-size: 260px 520px;
+  opacity: 0.56;
+  animation: snow-fall-secondary 11s linear infinite;
+}
+
+.site-loading-card {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  min-width: 148px;
+  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 72%, transparent);
+  border-radius: 22px;
+  padding: 24px 28px 22px;
+  background: color-mix(in srgb, var(--vp-c-bg) 78%, transparent);
+  box-shadow: 0 24px 58px rgb(0 0 0 / 18%);
+  color: var(--vp-c-text-1);
+}
+
+.site-loading-spinner {
+  width: 42px;
+  height: 42px;
+  border: 3px solid color-mix(in srgb, var(--vp-c-brand-1) 24%, transparent);
+  border-top-color: var(--vp-c-brand-1);
+  border-radius: 50%;
+  animation: loading-spin 0.78s linear infinite;
+}
+
+.site-loading-card p {
+  margin: 0;
+  color: var(--vp-c-text-2);
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
 }
 
 .site-bg {
@@ -176,6 +274,14 @@ body {
   order: 5;
 }
 
+.VPNavBarTitle .logo,
+.VPNavBarTitle .logo img,
+.VPNavBarTitle .VPImage.logo {
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
 .VPNavBarSocialLinks.social-links {
   order: 6;
 }
@@ -307,6 +413,12 @@ body {
 
   to {
     clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes loading-spin {
+  to {
+    transform: rotate(360deg);
   }
 }
 

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="linwang-l logo">
+  <defs>
+    <linearGradient id="ice" x1="16" y1="6" x2="48" y2="58" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#d7f7ff"/>
+      <stop offset="0.42" stop-color="#39bdf8"/>
+      <stop offset="1" stop-color="#12375f"/>
+    </linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <path
+    d="M36.6 4 13.8 34.1h16.4L24.7 60 50.2 27.6H34.1L36.6 4Z"
+    fill="url(#ice)"
+    stroke="#164e80"
+    stroke-linejoin="round"
+    stroke-width="2.4"
+    filter="url(#glow)"
+  />
+  <path
+    d="M34.2 11.2 21.1 31.1h12.4M33.1 33.8 28.8 51.2"
+    fill="none"
+    stroke="#c8f3ff"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-opacity="0.78"
+    stroke-width="2"
+  />
+</svg>

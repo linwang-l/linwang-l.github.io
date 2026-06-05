@@ -309,6 +309,13 @@ onUnmounted(() => {
 .category-heading {
   display: grid;
   gap: 4px;
+  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 70%, transparent);
+  border-radius: 22px;
+  padding: 18px 22px;
+  background: color-mix(in srgb, var(--vp-c-bg) 80%, transparent);
+  box-shadow: 0 18px 42px rgb(0 0 0 / 12%);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 
 .category-heading p {
