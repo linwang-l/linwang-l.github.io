@@ -1,6 +1,8 @@
 import DefaultTheme from 'vitepress/theme'
 import { inBrowser, useData } from 'vitepress'
 import { defineComponent, h, nextTick, onMounted, onUnmounted, provide } from 'vue'
+import ArticleNavDropdown from './components/ArticleNavDropdown.vue'
+import ClickPrismEffect from './components/ClickPrismEffect.vue'
 import DocOutlineCard from './components/DocOutlineCard.vue'
 import './custom.css'
 
@@ -82,6 +84,7 @@ const Layout = defineComponent({
 
     return () => {
       const asideOutlineBefore = slots['aside-outline-before']?.() ?? []
+      const navBarContentBefore = slots['nav-bar-content-before']?.() ?? []
 
       return (
       h('div', { class: 'site-shell' }, [
@@ -89,11 +92,16 @@ const Layout = defineComponent({
         h('div', { class: 'rain-layer', 'aria-hidden': 'true' }),
         h(DefaultTheme.Layout!, null, {
           ...slots,
+          'nav-bar-content-before': () => [
+            ...navBarContentBefore,
+            h(ArticleNavDropdown)
+          ],
           'aside-outline-before': () => [
             ...asideOutlineBefore,
             h(DocOutlineCard)
           ]
-        })
+        }),
+        h(ClickPrismEffect)
       ])
       )
     }

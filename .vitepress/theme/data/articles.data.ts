@@ -5,6 +5,7 @@ type Article = {
   title: string
   href: string
   source: string
+  categoryId?: string
   category: string
   kind: string
   description: string
@@ -24,9 +25,9 @@ const introArticle: Article = {
   tags: ['Blog', 'Life', 'Notes']
 }
 
-const articleDefinitions: Article[] = [
+const homeEntries: Article[] = [
   {
-    title: '有关我的',
+    title: '有关linwang-l',
     href: '/markdown-examples',
     source: 'markdown-examples.md',
     category: 'Profile',
@@ -42,15 +43,19 @@ const articleDefinitions: Article[] = [
     kind: '记录',
     description: '记录我支持、参与和关注的事情，也放一些之后会继续补充的内容。',
     tags: ['USTC', 'Linux', 'Notes']
-  },
+  }
+]
+
+const articleDefinitions: Article[] = [
   {
-    title: '文字展示',
-    href: '/hello-world',
-    source: 'hello-world.md',
-    category: 'Words',
+    title: '2026愚人节',
+    href: '/articles/分享/2026-april-fools',
+    source: 'articles/分享/2026-april-fools.md',
+    categoryId: 'shares',
+    category: '分享',
     kind: '随笔',
-    description: '一些文本、段落和 Markdown 展示内容，用来承载更轻量的表达。',
-    tags: ['Text', 'Markdown', 'Display']
+    description: '谎言的日子中，用温柔的话语说出实话。',
+    tags: ['分享', '文字', '愚人节']
   }
 ]
 
@@ -77,10 +82,19 @@ function withModifiedTime(article: Article) {
 }
 
 export default {
-  watch: ['index.md', 'markdown-examples.md', 'api-examples.md', 'hello-world.md'],
+  watch: [
+    'index.md',
+    'markdown-examples.md',
+    'api-examples.md',
+    'hello-world.md',
+    'articles/分享/2026-april-fools.md'
+  ],
   load() {
     return {
       introArticle: withModifiedTime(introArticle),
+      homeEntries: homeEntries
+        .map(withModifiedTime)
+        .sort((a, b) => b.timestamp - a.timestamp),
       articles: articleDefinitions
         .map(withModifiedTime)
         .sort((a, b) => b.timestamp - a.timestamp)

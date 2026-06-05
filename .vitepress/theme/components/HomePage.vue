@@ -7,8 +7,8 @@ import { data as articleData } from '../data/articles.data'
   <section class="blog-home">
     <aside class="home-sidebar" aria-label="个人资料">
       <section class="profile-card panel">
-        <img class="avatar" src="/avatar.png" alt="Linwang-l 的头像" />
-        <h1>Linwang-l</h1>
+        <img class="avatar" src="/avatar.png" alt="linwang-l 的头像" />
+        <h1>linwang-l</h1>
         <span class="name-mark" aria-hidden="true"></span>
         <p>乘上风，用白之羽翼与君同行，青色缝隙间的常夏之岛</p>
 
@@ -45,7 +45,7 @@ import { data as articleData } from '../data/articles.data'
         <span></span>
       </div>
 
-      <ArticleCard v-for="article in articleData.articles" :key="article.href" :article="article" />
+      <ArticleCard v-for="article in articleData.homeEntries" :key="article.href" :article="article" />
 
     </main>
   </section>

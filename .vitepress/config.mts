@@ -2,14 +2,13 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "Linwang-l's blog",
-  description: "just for fun",
+  title: "linwang-l's blog",
+  description: "从来一事无成",
   lastUpdated: true, // https://vitepress.dev/reference/default-theme-last-updated
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: 'Home', link: '/' },
-      { text: '文章', link: '/articles' }
+      { text: 'Home', link: '/' }
     ],
 
       logo: {  // Or logo: "/favicon.svg" if you don't need dark mode support

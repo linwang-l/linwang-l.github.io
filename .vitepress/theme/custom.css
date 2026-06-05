@@ -160,6 +160,34 @@ body {
   display: none !important;
 }
 
+.VPNavBarSearch.search {
+  order: 1;
+}
+
+.VPNavBarMenu.menu {
+  order: 2;
+}
+
+.VPNavBarTranslations.translations {
+  order: 4;
+}
+
+.VPNavBarAppearance.appearance {
+  order: 5;
+}
+
+.VPNavBarSocialLinks.social-links {
+  order: 6;
+}
+
+.VPNavBarExtra.extra {
+  order: 7;
+}
+
+.VPNavBarHamburger.hamburger {
+  order: 8;
+}
+
 @media (min-width: 960px) {
   .VPDoc.has-aside {
     padding: 40px 24px 72px;
