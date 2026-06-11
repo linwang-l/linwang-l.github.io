@@ -44,22 +44,38 @@ const activeCategory = computed(() => {
 
 const activeCategoryArticles = computed(() => categoryArticles(activeCategory.value.id))
 
+function setActiveCategory(categoryId: string, updateHash = true) {
+  const category = articleCategories.find((item) => item.id === categoryId)
+
+  activeCategoryId.value = category?.id ?? defaultCategoryId
+
+  if (updateHash && inBrowser) {
+    window.history.replaceState(null, '', `${window.location.pathname}#${activeCategoryId.value}`)
+  }
+}
+
 function syncActiveCategory() {
   if (!inBrowser) return
 
   const hashCategoryId = window.location.hash.slice(1)
-  const category = articleCategories.find((item) => item.id === hashCategoryId)
+  setActiveCategory(hashCategoryId, false)
+}
 
-  activeCategoryId.value = category?.id ?? defaultCategoryId
+function handleCategoryChange(event: Event) {
+  const categoryId = (event as CustomEvent<string>).detail
+
+  setActiveCategory(categoryId)
 }
 
 onMounted(() => {
   syncActiveCategory()
   window.addEventListener('hashchange', syncActiveCategory)
+  window.addEventListener('article-category-change', handleCategoryChange)
 })
 
 onUnmounted(() => {
   window.removeEventListener('hashchange', syncActiveCategory)
+  window.removeEventListener('article-category-change', handleCategoryChange)
 })
 </script>
 
@@ -97,6 +113,7 @@ onUnmounted(() => {
           :key="category.id"
           class="category-card panel"
           :href="`/articles#${category.id}`"
+          @click.prevent="setActiveCategory(category.id)"
         >
           <span>{{ category.label }}</span>
           <h2>{{ category.title }}</h2>

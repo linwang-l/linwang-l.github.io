@@ -5,10 +5,10 @@ const open = ref(false)
 const root = ref<HTMLElement | null>(null)
 
 const categories = [
-  { text: '学习笔记', href: '/articles#study-notes' },
-  { text: '小说', href: '/articles#novels' },
-  { text: '日历', href: '/articles#calendar' },
-  { text: '分享', href: '/articles#shares' }
+  { id: 'study-notes', text: '学习笔记', href: '/articles#study-notes' },
+  { id: 'novels', text: '小说', href: '/articles#novels' },
+  { id: 'calendar', text: '日历', href: '/articles#calendar' },
+  { id: 'shares', text: '分享', href: '/articles#shares' }
 ]
 
 function toggle() {
@@ -23,6 +23,18 @@ function handleDocumentClick(event: MouseEvent) {
   if (!root.value?.contains(event.target as Node)) {
     close()
   }
+}
+
+function handleCategoryClick(event: MouseEvent, categoryId: string) {
+  const path = window.location.pathname.replace(/\/$/, '')
+  const isArticlesPage = path === '/articles'
+
+  close()
+
+  if (!isArticlesPage) return
+
+  event.preventDefault()
+  window.dispatchEvent(new CustomEvent('article-category-change', { detail: categoryId }))
 }
 
 onMounted(() => {
@@ -53,7 +65,7 @@ onUnmounted(() => {
         :key="category.href"
         class="article-nav-item"
         :href="category.href"
-        @click="close"
+        @click="handleCategoryClick($event, category.id)"
       >
         {{ category.text }}
       </a>

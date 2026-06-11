@@ -43,10 +43,29 @@ const homeEntries: Article[] = [
     kind: '记录',
     description: '记录我支持、参与和关注的事情，也放一些之后会继续补充的内容。',
     tags: ['USTC', 'Linux', 'Notes']
+  },
+  {
+    title: '自我介绍',
+    href: '/articles/小说/自我介绍',
+    source: 'articles/小说/自我介绍.md',
+    category: '小说',
+    kind: '小说',
+    description: '黑袍黑发的魔术师，以问答的方式介绍自己。',
+    tags: ['小说', '自我介绍', '林望']
   }
 ]
 
 const articleDefinitions: Article[] = [
+  {
+    title: '自我介绍',
+    href: '/articles/小说/自我介绍',
+    source: 'articles/小说/自我介绍.md',
+    categoryId: 'novels',
+    category: '小说',
+    kind: '小说',
+    description: '黑袍黑发的魔术师，以问答的方式介绍自己。',
+    tags: ['小说', '自我介绍', '林望']
+  },
   {
     title: '2026愚人节',
     href: '/articles/分享/2026-april-fools',
@@ -87,6 +106,7 @@ export default {
     'markdown-examples.md',
     'api-examples.md',
     'hello-world.md',
+    'articles/小说/自我介绍.md',
     'articles/分享/2026-april-fools.md'
   ],
   load() {
