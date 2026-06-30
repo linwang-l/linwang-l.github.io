@@ -45,26 +45,83 @@ const homeEntries: Article[] = [
     tags: ['USTC', 'Linux', 'Notes']
   },
   {
-    title: '自我介绍',
-    href: '/articles/小说/自我介绍',
-    source: 'articles/小说/自我介绍.md',
+    title: '人物',
+    href: '/articles/小说/人物',
+    source: 'articles/小说/人物.md',
     category: '小说',
-    kind: '小说',
-    description: '黑袍黑发的魔术师，以问答的方式介绍自己。',
-    tags: ['小说', '自我介绍', '林望']
+    kind: '设定',
+    description: '整理林望、雷古勒斯等角色资料。',
+    tags: ['小说', '人物', '设定']
+  },
+  {
+    title: '时间线',
+    href: '/articles/小说/时间线',
+    source: 'articles/小说/时间线.md',
+    category: '小说',
+    kind: '设定',
+    description: '记录救世主、灾变与影子诞生后的故事脉络。',
+    tags: ['小说', '时间线', '世界观']
+  },
+  {
+    title: '战斗相关设定',
+    href: '/articles/小说/战斗相关设定',
+    source: 'articles/小说/战斗相关设定.md',
+    category: '小说',
+    kind: '设定',
+    description: '记录漫游者、法则、创世碎片与战斗表现。',
+    tags: ['小说', '战斗', '设定']
+  },
+  {
+    title: '设定集',
+    href: '/articles/小说/设定集',
+    source: 'articles/小说/设定集.md',
+    category: '小说',
+    kind: '设定',
+    description: '整理世界、命运力、规则与漫游者的基础设定。',
+    tags: ['小说', '设定集', '世界观']
   }
 ]
 
 const articleDefinitions: Article[] = [
   {
-    title: '自我介绍',
-    href: '/articles/小说/自我介绍',
-    source: 'articles/小说/自我介绍.md',
+    title: '人物',
+    href: '/articles/小说/人物',
+    source: 'articles/小说/人物.md',
     categoryId: 'novels',
     category: '小说',
-    kind: '小说',
-    description: '黑袍黑发的魔术师，以问答的方式介绍自己。',
-    tags: ['小说', '自我介绍', '林望']
+    kind: '设定',
+    description: '整理林望、雷古勒斯等角色资料。',
+    tags: ['小说', '人物', '设定']
+  },
+  {
+    title: '时间线',
+    href: '/articles/小说/时间线',
+    source: 'articles/小说/时间线.md',
+    categoryId: 'novels',
+    category: '小说',
+    kind: '设定',
+    description: '记录救世主、灾变与影子诞生后的故事脉络。',
+    tags: ['小说', '时间线', '世界观']
+  },
+  {
+    title: '战斗相关设定',
+    href: '/articles/小说/战斗相关设定',
+    source: 'articles/小说/战斗相关设定.md',
+    categoryId: 'novels',
+    category: '小说',
+    kind: '设定',
+    description: '记录漫游者、法则、创世碎片与战斗表现。',
+    tags: ['小说', '战斗', '设定']
+  },
+  {
+    title: '设定集',
+    href: '/articles/小说/设定集',
+    source: 'articles/小说/设定集.md',
+    categoryId: 'novels',
+    category: '小说',
+    kind: '设定',
+    description: '整理世界、命运力、规则与漫游者的基础设定。',
+    tags: ['小说', '设定集', '世界观']
   },
   {
     title: '2026愚人节',
@@ -106,7 +163,10 @@ export default {
     'markdown-examples.md',
     'api-examples.md',
     'hello-world.md',
-    'articles/小说/自我介绍.md',
+    'articles/小说/人物.md',
+    'articles/小说/时间线.md',
+    'articles/小说/战斗相关设定.md',
+    'articles/小说/设定集.md',
     'articles/分享/2026-april-fools.md'
   ],
   load() {
