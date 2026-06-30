@@ -43,42 +43,6 @@ const homeEntries: Article[] = [
     kind: '记录',
     description: '记录我支持、参与和关注的事情，也放一些之后会继续补充的内容。',
     tags: ['USTC', 'Linux', 'Notes']
-  },
-  {
-    title: '人物',
-    href: '/articles/小说/人物',
-    source: 'articles/小说/人物.md',
-    category: '小说',
-    kind: '设定',
-    description: '整理林望、雷古勒斯等角色资料。',
-    tags: ['小说', '人物', '设定']
-  },
-  {
-    title: '时间线',
-    href: '/articles/小说/时间线',
-    source: 'articles/小说/时间线.md',
-    category: '小说',
-    kind: '设定',
-    description: '记录救世主、灾变与影子诞生后的故事脉络。',
-    tags: ['小说', '时间线', '世界观']
-  },
-  {
-    title: '战斗相关设定',
-    href: '/articles/小说/战斗相关设定',
-    source: 'articles/小说/战斗相关设定.md',
-    category: '小说',
-    kind: '设定',
-    description: '记录漫游者、法则、创世碎片与战斗表现。',
-    tags: ['小说', '战斗', '设定']
-  },
-  {
-    title: '设定集',
-    href: '/articles/小说/设定集',
-    source: 'articles/小说/设定集.md',
-    category: '小说',
-    kind: '设定',
-    description: '整理世界、命运力、规则与漫游者的基础设定。',
-    tags: ['小说', '设定集', '世界观']
   }
 ]
 
